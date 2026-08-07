@@ -3,10 +3,10 @@ kind: Kustomization
 namespace: default
 
 commonLabels:
-  app: sample-api
+  app: sample-api-jannin
 
 configMapGenerator:
-- name: sample-api
+- name: sample-api-jannin
   envs:
   - variables.properties
 

@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sample-api
+  name: sample-api-jannin
   labels:
-    app: sample-api
+    app: sample-api-jannin
     component: api
 spec:
   replicas: 1
@@ -15,25 +15,25 @@ spec:
       maxSurge: 75%
   selector:
     matchLabels:
-      app: sample-api
+      app: sample-api-jannin
   template:
     metadata:
       annotations:
         cluster-autoscaler.kubernetes.io/safe-to-evict: "true"
       labels:
-        app: sample-api
+        app: sample-api-jannin
         component: api
     spec:
       containers:
-      - name: sample-api
+      - name: sample-api-jannin
         image: ghcr.io/stefanprodan/podinfo:6.6.2
         ports:
         - name: http
-          containerPort: 9898
+          containerPort: 8080
           protocol: TCP
         envFrom:
         - configMapRef:
-            name: sample-api
+            name: sample-api-jannin
         resources:
           requests:
             memory: 64Mi
